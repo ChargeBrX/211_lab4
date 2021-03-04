@@ -6,10 +6,11 @@ int main()
     int i,j,n,x[4],tmp,tpm;
     scanf("%d",&n);
     x[0] = 1;
-    for(i=0;i<2;i++)
+    for(i=0;i<n;i++)
     {
-        gets(sc);
+        x[0] = 1;
 
+        scanf("%s",sc);
         for(j=0;j<strlen(sc);j++)
         {
             if(sc[j]=='A')
@@ -22,7 +23,7 @@ int main()
             {
                 tmp = x[0];
                 x[0] = x[3];
-                x[0] = tmp;
+                x[3] = tmp;
             }
             else if(sc[j]=='C')
             {
@@ -57,8 +58,9 @@ int main()
         {
             if(x[j]==1)
             {
-                printf("%d",j+1);
+                printf("%d\n",j+1);
             }
+            x[j] = 0;
         }
 
     }
