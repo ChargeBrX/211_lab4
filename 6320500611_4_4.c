@@ -1,45 +1,63 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 int main()
 {
-    char set[1000];
-    char ch[11][4] = {"i", "of", "the", "on", "at", "for", "with","a", "an", "in","and"};
+    char set[1000],se[1000];
+    char ch[22][4] = {"i", "of", "the", "on", "at", "for", "with","a", "an", "in","and"};
 
-    char *token ;
-    int i,j,x=1;
+    char *token;
+    int i,j,x=1,y=1;
 
-    fgets(set,1000,stdin);
-
-    token = strtok(set," ");
-    while(token!=NULL)
+    scanf("%[^\n]s",se);
+    for(i=0;i<1000;i++)
     {
-        if(x==1)
+        if(se[i]==' ')
         {
-            printf("%c",toupper(token[0]));
-            x = 0;
+            set[i] = ' ';
         }
         else
         {
-            for(i=0; i<11; i++)
+            set[i] = tolower(se[i]);
+        }
+    }
+
+    if(strlen(se)<=1000)
+    {
+        token = strtok(set," ");
+
+        while(token!=NULL)
+        {
+            if(x==1)
             {
-                if(strcmp(token,ch[i]) != 0)
+                printf("%c",toupper(token[0]));
+                x = 0;
+            }
+            else
+            {
+
+                for(i=0; i<11; i++)
                 {
-                    j = 1;
-                }
-                else
-                {
-                    j = 0;
-                    break;
+                    if(strcmp(token,ch[i]) != 0)
+                    {
+                        j = 1;
+                    }
+                    else
+                    {
+                        j = 0;
+                        break;
+                    }
                 }
             }
-        }
 
-        if(j==1)
-        {
-            printf("%c",toupper(token[0]));
+            if(j==1)
+            {
+                printf("%c",toupper(token[0]));
+            }
+            token = strtok(NULL," ");
         }
-        token = strtok(NULL," ");
     }
+
     return 0;
 
 }
