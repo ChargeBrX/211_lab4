@@ -7,7 +7,8 @@ int main()
 
     char *token ;
     int i,j,x=1;
-    gets(set);
+
+    fgets(set,1000,stdin);
 
     token = strtok(set," ");
     while(token!=NULL)
